@@ -1,17 +1,20 @@
 package com.jk.students_courses.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
 @Entity
 @Table(name = "courses")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Course {
 
     @Id
@@ -22,6 +25,7 @@ public class Course {
 
     private String duration;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "courses")
     private Set<Student> students = new HashSet<>();
 

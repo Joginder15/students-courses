@@ -30,6 +30,7 @@ public class StudentService {
                 .orElseThrow(() -> new RuntimeException("Course not founf"));
 
         student.addCourse(course);
+
         return studentRepository.save(student);
     }
 
